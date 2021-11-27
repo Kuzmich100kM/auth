@@ -30,3 +30,5 @@ server/.env.local
 client/.env.local
 server/logs/*
 
+client/src/components/Auth/Login2.js
+client/src/components/Auth/Registration2.js
