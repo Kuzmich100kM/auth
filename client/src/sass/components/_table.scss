@@ -1,0 +1,33 @@
+.MuiTableBody-root {
+	.MuiTableCell-body {
+		&.MuiTableCell-alignLeft {
+			&[value="SELL"] {
+				background-color: color($danger, -30);
+			}
+			&[value="BUY"] {
+				background-color: color($emerald, -30);
+			}
+		}
+	}
+}
+.MuiTableCell-root {
+	overflow-wrap: anywhere;
+}
+.MuiTableCell-root.hide {
+	display: none;
+}
+.details-wrap {
+	margin: 0.5em 1rem;
+	.row {
+		display: table-row;
+		div {
+			display: table-cell;
+			padding: 0 1rem;
+			border: 1px solid $info;
+		}
+	}
+}
+/* Класс начинается с MTableToolbar-title-  (т.е. префикс не важен) */
+// [class^="MTableToolbar-title-"] {
+// 	overflow: initial !important;
+// }

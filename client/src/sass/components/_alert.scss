@@ -1,0 +1,45 @@
+.alerts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+
+
+    >div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 0 1em 0;
+        padding: 0.5em 1rem;
+        border: 1px solid;
+        outline: none;
+        text-decoration: none;
+
+        &.error {
+            background-color: color($danger, -35);
+            border-color: color($danger, -20);
+            color: color($danger, 30);
+        }
+
+        &.warning {
+            background-color: color($warning, -35);
+            border-color: color($warning, -10);
+            color: color($warning, 30);
+        }
+
+        &.info {
+            background-color: color($blue, -47);
+            border-color: color($blue, -35);
+            color: color($blue, 25);
+        }
+
+        &.success {
+            background-color: color($success, -7);
+            border-color: color($success, 15);
+            color: color($success, 60);
+        }
+
+    }
+}

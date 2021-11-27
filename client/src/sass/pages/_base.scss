@@ -1,0 +1,22 @@
+html {
+	background-color: color($white);
+	// @include media($xl) {
+	// 	font-size: fz(0);
+	// }
+}
+
+hr {
+	border: none;
+	color: $gray;
+	background-color: $gray;
+	height: 1px;
+}
+
+section {
+	padding: 0.5em 1rem;
+}
+
+.v-center {
+	margin-top: auto;
+	margin-bottom: auto;
+}

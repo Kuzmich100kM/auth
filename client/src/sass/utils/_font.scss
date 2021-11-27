@@ -1,0 +1,151 @@
+@font-face {
+	font-family: "Play";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Play"), url("../fonts/Play/Play-Regular.ttf") format("truetype");
+}
+
+/* * {
+	font-family: "Play", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+		"Droid Sans", "Helvetica Neue", sans-serif !important;
+} */
+html {
+	font-size: $fzBaseHtml;
+}
+
+body {
+	//font-size: 1.4rem;
+	font-family: "Play", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-weight: 600;
+	padding: 0.5em 1rem;
+	line-height: 1.2;
+}
+//margin-bottom: $headings-margin-bottom;
+//font-family: $headings-font-family;
+//	font-weight: $headings-font-weight;
+//	line-height: $headings-line-height;
+//	color: $headings-color;
+//}
+
+h1,
+.h1 {
+	font-size: $fzBaseHeading * 2.5;
+}
+h2,
+.h2 {
+	font-size: $fzBaseHeading * 2;
+}
+
+h3,
+.h3 {
+	font-size: $fzBaseHeading * 1.75;
+}
+h4,
+.h4 {
+	font-size: $fzBaseHeading * 1.5;
+}
+
+h5,
+.h5 {
+	font-size: $fzBaseHeading * 1.25;
+}
+
+h6,
+.h6 {
+	font-size: $fzBaseHeading * 1;
+}
+
+// @each $name,
+// $size in $medias {
+// 	$fzBaseHeading $.#{$name}: 1rem;
+
+// 	.#{$name} {
+// 		font-size: $size;
+// 	}
+// }
+
+// $total: 8;
+
+// @function column-width($col) {
+// 	@return percentage($col/$total);
+// }
+
+// @function fz-head($k) {
+// 	@return $fzBaseHeading * $k
+// }
+
+// @for $i from 1 through 6 {
+
+// 	h#{$i},
+// 	.h#{$i} {
+// 		font-size: fz-head(2.5);
+
+// 		@include media($xl) {
+// 			font-size: fz-head(2.2)
+// 		}
+
+// 		@include media($md) {
+// 			font-size: fz-head(2)
+// 		}
+// 	}
+// }
+
+/* @font-face {
+	font-family: "Material Icons";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Material Icons"),
+		local("MaterialIcons-Regular"),
+		url(https://rawgit.com/google/material-design-icons/master/iconfont/MaterialIcons-Regular.woff2) format("woff2"),
+		url(https://rawgit.com/google/material-design-icons/master/iconfont/MaterialIcons-Regular.woff) format("woff"),
+		url(https://rawgit.com/google/material-design-icons/master/iconfont/MaterialIcons-Regular.ttf) format("truetype");
+}
+
+.material-icons {
+	font-family: "Material Icons";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: "liga";
+} */

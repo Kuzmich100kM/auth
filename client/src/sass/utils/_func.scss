@@ -1,0 +1,120 @@
+// Функция для задания цвета.
+// background-color: color($primary);       // вернет дефолтный цвет $primary
+// background-color: color($primary, 20);   // затемнит на 20% цвет $primary
+// background-color: color($primary, -20);  // осветлит на 20% цвет $primary
+// background-color: $primary;              // можно и так передать дефолтный цвет $primary
+
+@function color($name, $percent: 0) {
+	@if $percent and $percent>0 {
+		@return darken($name, $percent);
+	}
+	@if $percent and $percent < 0 {
+		@return lighten($name, abs($percent));
+	}
+	@return $name;
+}
+
+// ----------------
+
+// Миксин для брейкпоинтов.
+// Первый параметр ($sm, $md, $lg или $xl)
+// Второй параметр (ориентация) не обязательный, по-умолчанию (landscape)
+// html {
+//    @include media($sm, "portrait") {
+//        font-size: 20px;
+//    }
+//}
+@mixin media($size, $orientation: "landscape") {
+	@media (max-width: $size) and (orientation: $orientation) {
+		@content;
+	}
+}
+
+// ----------------
+@mixin when-inside($context) {
+	#{$context} & {
+		@content;
+	}
+}
+// ----------------
+
+$font-sizes: (-3: 0.6rem, -2: 0.75rem, -1: 0.875rem, 0: 1rem, 1: 1.333rem, 2: 1.777rem);
+
+@function fz($level) {
+	@return map-get($font-sizes, $level);
+}
+
+$base-font-size: 1rem;
+$base-line-height: $base-font-size * 1.25;
+
+$line-heights: (
+	1: $base-line-height,
+	2: $base-line-height * 1.25,
+	3: $base-line-height * 1.5,
+	4: $base-line-height * 1.75,
+	5: $base-line-height * 2,
+);
+
+@function lh($level) {
+	@return map-get($line-heights, $level);
+}
+
+@mixin text-setting($level: 1) {
+	font-size: fz($level);
+	line-height: lh($level);
+	border: 1px solid green;
+}
+
+.text-1 {
+	@include text-setting(1);
+}
+
+.text-2 {
+	@include text-setting(2);
+}
+
+.text-3 {
+	@include text-setting(3);
+}
+
+.text-4 {
+	@include text-setting(4);
+}
+
+.text-5 {
+	@include text-setting(5);
+}
+
+// Mediaquery not use
+// @mixin media-sm {
+//     @media screen and (min-width: $sm) {
+//         @content;
+//     }
+// }
+// @mixin media-md {
+//     @media screen and (min-width: $md) {
+//         @content;
+//     }
+// }
+// @mixin media-lg {
+//     @media screen and (min-width: $lg) {
+//         @content;
+//     }
+// }
+// @mixin media-xl {
+//     @media screen and (min-width: $xl) {
+//         @content;
+//     }
+// }
+
+// Colors not use
+// $colors: (
+// 	primary: $carrot,
+// 	secondary: $emerald,
+// 	oranges: $orange,
+// );
+
+// @function colores($name, $percent: 0) {
+// 	$c: map-get($colors, $name);
+// 	@return color($c, $percent);
+// }

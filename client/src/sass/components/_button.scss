@@ -1,0 +1,197 @@
+%button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    margin: 1em 10px;
+    padding: 0 1rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    background-color: color($light, 5);
+    border-color: color($light, 15);
+    color: $dark;
+    box-shadow: #0000001f 1px 1px 3px;
+    cursor: pointer;
+
+    &.fill {
+        // width: -moz-available;
+        // width: -webkit-fill-available;
+        // width: fill-available;
+    }
+
+    // For button 22px height need add class "small"
+    &.small {
+        height: 22px;
+        font-size: fz(0);
+    }
+
+    &:hover {
+        background-color: color($light, 10);
+        border-color: color($light, 20);
+        box-shadow: none;
+    }
+
+    &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+
+    &:first-of-type {
+        // margin-left: auto;
+        //margin-right: 15px;
+    }
+}
+
+button,
+div .btn {
+    @extend %button;
+
+    &.btn-submit {
+        background-color: color($success);
+        border-color: color($success, 15);
+        color: $dark;
+        flex-grow: 1.5;
+
+        &:hover,
+        &:focus {
+            background-color: color($success, 5);
+            border-color: color($success, 15);
+        }
+
+        // &:focus {
+        // 	background-color: color($success, 15);
+        // 	border-color: color($success, 20);
+        // }
+    }
+
+    &.btn-secondary {
+        background-color: color($secomdary);
+        border-color: color($secomdary, 10);
+        color: $dark;
+        flex-grow: 2;
+
+        &:hover,
+        &:focus {
+            background-color: color($secomdary, 5);
+            border-color: color($secomdary, 15);
+        }
+    }
+
+    &.btn-danger {
+        background-color: color($danger, -30);
+        border-color: color($danger, -15);
+        color: color($danger, 40);
+        flex-grow: 2;
+
+        &:hover {
+            background-color: color($danger, -25);
+            border-color: color($danger, -10);
+        }
+    }
+
+    &.btn-outlined {
+        background-color: color($light);
+        border-color: color($light, 20);
+        color: $info;
+        flex-grow: 2;
+
+        &:hover {
+            background-color: color($light, 10);
+            border-color: color($light, 25);
+        }
+
+        // &:focus {
+        // 	background-color: color($light, 15);
+        // 	border-color: color($light, 30);
+        // }
+    }
+
+    &.btn-link {
+        height: auto;
+        background-color: initial;
+        border: none;
+        border-bottom: 1px dotted;
+        box-shadow: none;
+        color: $info;
+        flex-grow: 0;
+        margin: 1em 13px;
+        padding: 0.5em 0 0;
+
+        &:hover {
+            color: color($info, 10);
+        }
+
+        &.active {
+            background-color: #e3f5ff;
+            border: 1px solid color($light, 10);
+            color: color($info, 30);
+        }
+    }
+
+    &.link {
+        background-color: initial;
+        border: none;
+        box-shadow: none;
+        color: $info;
+        flex-grow: 0;
+        text-decoration: solid;
+        margin: 0;
+        padding: 0;
+
+        &:hover {
+            color: color($info, 10);
+        }
+
+        &.active {
+            background-color: #e3f5ff;
+            border: 1px solid color($light, 10);
+            color: color($info, 30);
+        }
+    }
+
+    &.btn-cross {
+        display: block; // Проверить
+        margin: 0.5em 0 0 12px;
+        padding: 0;
+        height: auto;
+        position: relative;
+        line-height: 0;
+        color: $danger;
+        text-align: right;
+        background-color: initial;
+        border: none;
+        box-shadow: none;
+        opacity: 0.75;
+        cursor: pointer;
+
+        &::after {
+            content: "\2716";
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &.small {
+            height: auto;
+            grid-area: cross;
+            padding: 0 10px;
+            align-self: center;
+            font-size: fz(-3);
+            text-align: center;
+        }
+    }
+}
+
+.close-cross {
+    color: $gray;
+    z-index: 1000;
+
+    &:hover {
+        color: $dark;
+    }
+}
