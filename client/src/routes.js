@@ -28,6 +28,7 @@ export default function routes() {
 					</RequireAuth>
 				}
 			/>
+			<Route path="*" element={<Navigate to="/" />} />
 		</Routes>
 	)
 }

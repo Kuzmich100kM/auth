@@ -1,7 +1,6 @@
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 const uuid = require("uuid")
 const CustomError = require("../service/errorResponse")
-const authService = require("../service/auth.service")
 const tokenService = require("../service/token.service")
 const mailservice = require("../service/mail.service")
 const AuthModel = require("../models/auth.model")
@@ -123,15 +122,6 @@ module.exports.activation = async (req, res, next) => {
 		if (!user) throw new CustomError(400, "Invalid activation link")
 
 		return res.redirect(process.env.CLIENT_URL)
-	} catch (err) {
-		next(err)
-	}
-}
-
-module.exports.getUsers = async (req, res, next) => {
-	try {
-		const users = await authService.getAllUsers()
-		res.json(users)
 	} catch (err) {
 		next(err)
 	}

@@ -5,8 +5,6 @@ export default function Navbar() {
 	let pages = [
 		{ url: "openpage", name: "Open page" },
 		{ url: "auth/privatepage", name: "Private page" },
-		{ url: "login", name: "login" },
-		{ url: "login2", name: "login2" },
 	]
 
 	const Navs = () => (

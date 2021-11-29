@@ -1,7 +1,7 @@
 require("dotenv").config()
 const express = require("express")
-const mongoose = require("mongoose")
 const cors = require("cors")
+const path = require("path")
 const cookieParser = require("cookie-parser")
 const errorMiddleware = require("./service/error.middleware")
 const app = express()
@@ -12,13 +12,19 @@ app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }))
 
 require("./routes")(app)
 app.use(errorMiddleware)
+
+// This only for builded and deployed app
+app.use(express.static("public"))
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "./public/index.html"))
+})
 ;(async () => {
 	try {
-		await mongoose.connect(process.env.MONGO_URI, {
-			useNewUrlParser: true,
+		await require("./db")()
+
+		app.listen(process.env.PORT, () => {
+			console.log(`Server started on port ${process.env.PORT}`)
 		})
-		console.log(`MongoDb connected`)
-		app.listen(process.env.PORT, () => console.log(`Start server on port ${process.env.PORT}`))
 	} catch (e) {
 		console.error(e)
 	}

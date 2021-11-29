@@ -42,7 +42,7 @@ export default function Registration() {
 
 	return (
 		<div className="register">
-			<h4>Create account</h4>
+			<h4>Create new account</h4>
 			<FormPanel
 				initValue={initValue}
 				initModels={initModels}

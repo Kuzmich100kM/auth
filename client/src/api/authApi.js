@@ -5,8 +5,6 @@ let authApi = {
 	login: (email, password) => $api.post("login", { email, password }),
 	logout: () => $api.post(`logout`),
 	refreshtoken: () => $api.get(`refreshtoken`),
-
-	//getusers: () => $api.get(`user/getusers`, { email, password }),
 }
 
 export default authApi
