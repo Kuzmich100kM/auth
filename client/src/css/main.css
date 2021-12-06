@@ -183,6 +183,22 @@ section {
   .register form {
     max-width: 350px; }
 
+.dashboard .change-role {
+  display: flex;
+  align-items: baseline; }
+
+.page404 {
+  font-size: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #9faeff;
+  border-bottom: 1px solid #000; }
+  .page404 > div:first-child {
+    font-size: 10vw; }
+
 form {
   display: flex;
   flex-direction: row;
@@ -250,6 +266,23 @@ form {
     padding: 0.5em 5px;
     position: relative;
     color: #000; }
+  form input ~ .eye {
+    display: none;
+    cursor: pointer;
+    left: 100%;
+    transform: translateX(calc(-100% + -72px));
+    position: absolute; }
+  form input[value]:not([value=""])[id="password"] ~ .eye {
+    display: inline;
+    cursor: pointer;
+    font-size: 0.80rem;
+    height: 8px; }
+  form input[value]:not([value=""])[id="password"][type="password"] ~ .eye::after {
+    content: "SHOW";
+    color: #689982; }
+  form input[value]:not([value=""])[id="password"][type="input"] ~ .eye::after {
+    content: "HIDE";
+    color: #996877; }
   form .radio {
     display: flex; }
   form .error {
@@ -326,11 +359,17 @@ form .form-group.leftLabel label {
 
 .alerts {
   display: flex;
+  position: absolute;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
   width: 100%;
-  margin-top: 20px; }
+  height: 90vh;
+  max-width: 350px;
+  margin-top: 20px;
+  right: 10px;
+  bottom: 0;
+  overflow-y: hidden; }
   .alerts > div {
     display: flex;
     justify-content: space-between;
@@ -356,6 +395,8 @@ form .form-group.leftLabel label {
       background-color: #f1ffe5;
       border-color: #b3ff75;
       color: #408e00; }
+  .alerts button.btn-link {
+    margin: -10px 10px 10px auto; }
 
 form .selecter {
   height: 28px;
@@ -468,6 +509,9 @@ div .btn {
   div .small.btn {
     height: 22px;
     font-size: 1rem; }
+  button.short,
+  div .short.btn {
+    max-width: fit-content; }
   button:hover,
   div .btn:hover {
     background-color: #e1e1e1;
@@ -490,6 +534,18 @@ div .btn.btn-submit {
     background-color: #cfffa8;
     border-color: #b3ff75; }
 
+button.btn-primary,
+div .btn.btn-primary {
+  background-color: #5609fa;
+  border-color: #33039a;
+  color: #ffffff;
+  flex-grow: 2; }
+  button.btn-primary:hover, button.btn-primary:focus,
+  div .btn.btn-primary:hover,
+  div .btn.btn-primary:focus {
+    background-color: #4404cc;
+    border-color: #2b0281; }
+
 button.btn-secondary,
 div .btn.btn-secondary {
   background-color: #9faeff;
@@ -504,14 +560,14 @@ div .btn.btn-secondary {
 
 button.btn-danger,
 div .btn.btn-danger {
-  background-color: #ffd6d8;
-  border-color: #ff8a8f;
-  color: #700005;
+  background-color: #fad9a4;
+  border-color: #f7ba5b;
+  color: #362203;
   flex-grow: 2; }
   button.btn-danger:hover,
   div .btn.btn-danger:hover {
-    background-color: #ffbdc0;
-    border-color: #ff7077; }
+    background-color: #f9cf8b;
+    border-color: #f5b043; }
 
 button.btn-outlined,
 div .btn.btn-outlined {
@@ -636,11 +692,6 @@ header {
       color: inherit;
       padding: 0 0 0 15px; }
 
-.form-strat {
-  max-width: 550px;
-  margin: 20px auto; }
-
-/* Класс начинается с MTableToolbar-title-  (т.е. префикс не важен) */
 .MuiTableBody-root .MuiTableCell-body.MuiTableCell-alignLeft[value="SELL"] {
   background-color: #ffd6d8; }
 
@@ -663,371 +714,11 @@ header {
       border: 1px solid #7f8c8d; }
 
 /* Класс начинается с MTableToolbar-title-  (т.е. префикс не важен) */
-.trades {
-  height: calc(100vh - 35px); }
-  .trades .below-header-wrap {
-    display: flex;
-    margin: 5px 10px;
-    align-items: center; }
-    .trades .below-header-wrap button.pair-selector {
-      min-width: 110px;
-      right: 15px;
-      margin: 0 0 0 10px;
-      width: 110px; }
-    .trades .below-header-wrap .selector-charts-type {
-      width: 110px;
-      margin-left: auto;
-      padding-left: 20px; }
-  .trades .center-wrap {
-    display: flex;
-    flex-direction: column; }
-
-.charts-wrap {
-  display: block;
-  height: calc(100vh - 385px); }
-  .charts-wrap .charts {
-    display: grid;
-    grid-gap: 30px 10px;
-    margin: 0 10px;
-    height: 100%; }
-    .charts-wrap .charts.type1-1 {
-      grid-template-areas: "num1";
-      grid-template-rows: 1fr; }
-    .charts-wrap .charts.type2-1 {
-      grid-template-areas: "num1" "num2";
-      grid-template-rows: 1fr 1fr; }
-    .charts-wrap .charts.type2-2 {
-      grid-template-areas: "num1 num2";
-      grid-template-columns: 1fr 1fr; }
-    .charts-wrap .charts.type3-1 {
-      grid-template-areas: "num1 num1" "num2 num3";
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr; }
-    .charts-wrap .charts.type3-2 {
-      grid-template-areas: "num1 num3" "num2 num2";
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr; }
-    .charts-wrap .charts.type3-3 {
-      grid-template-areas: "num1 num2" "num3 num2";
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr; }
-    .charts-wrap .charts.type3-4 {
-      grid-template-areas: "num1 num2" "num1 num3";
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr; }
-    .charts-wrap .charts.type4-1 {
-      grid-template-areas: "num1 num3" "num2 num4";
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr; }
-    .charts-wrap .charts.type4-2 {
-      grid-template-areas: "num1 num1 num1" "num2 num3 num4";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr; }
-    .charts-wrap .charts.type4-3 {
-      grid-template-areas: "num1 num3 num4" "num2 num2 num2";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr; }
-    .charts-wrap .charts.type4-4 {
-      grid-template-areas: "num1 num2" "num1 num3" "num1 num4";
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr; }
-    .charts-wrap .charts.type4-5 {
-      grid-template-areas: "num1 num2" "num3 num2" "num4 num2";
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr; }
-    .charts-wrap .charts.type4-6 {
-      grid-template-areas: "num1 num1 num2" "num1 num1 num3" "num1 num1 num4";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr; }
-    .charts-wrap .charts.type5-1 {
-      grid-template-areas: "num2 num3 num4" "num1 num5 num5" "num1 num5 num5";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr; }
-    .charts-wrap .charts.type5-2 {
-      grid-template-areas: "num1 num1 num3" "num1 num1 num4" "num2 num2 num5";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr; }
-    .charts-wrap .charts.type5-3 {
-      grid-template-areas: "num1 num1 num2" "num1 num1 num3" "num1 num1 num4" "num1 num1 num5";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type5-4 {
-      grid-template-areas: "num2 num1 num1" "num3 num1 num1" "num4 num1 num1" "num5 num1 num1";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type5-5 {
-      grid-template-areas: "num1 num1 num3" "num1 num1 num4" "num2 num2 num5";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr; }
-    .charts-wrap .charts.type5-6 {
-      grid-template-areas: "num1 num1 num2" "num1 num1 num3" "num1 num1 num4" "num1 num1 num5";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type6-1 {
-      grid-template-areas: "num2 num1 num1" "num3 num6 num6" "num4 num6 num6" "num5 num6 num6";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type6-2 {
-      grid-template-areas: "num2 num1 num1" "num3 num1 num1" "num4 num6 num6" "num5 num6 num6";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type6-3 {
-      grid-template-areas: "num2 num1 num6" "num3 num1 num6" "num4 num1 num6" "num5 num1 num6";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type6-4 {
-      grid-template-areas: "num3 num1 num2" "num4 num1 num2" "num5 num1 num2" "num6 num1 num2";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type6-5 {
-      grid-template-areas: "num2 num1 num3" "num4 num1 num3" "num5 num1 num3" "num6 num1 num3";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type6-6 {
-      grid-template-areas: "num2 num1 num4" "num3 num1 num4" "num5 num1 num4" "num6 num1 num4";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type6-7 {
-      grid-template-areas: "num2 num1 num5" "num3 num1 num5" "num4 num1 num5" "num6 num1 num5";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type6-8 {
-      grid-template-areas: "num2 num1 num1" "num3 num1 num1" "num4 num1 num1" "num5 num1 num1" "num6 num1 num1";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type7-1 {
-      grid-template-areas: "num1 num6 num6" "num2 num7 num7" "num3 num7 num7" "num4 num7 num7" "num5 num7 num7";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type7-2 {
-      grid-template-areas: "num1 num1 num2" "num1 num1 num3" "num1 num1 num4" "num5 num6 num7" "num5 num6 num7";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type8-1 {
-      grid-template-areas: "num1 num6 num7" "num2 num8 num8" "num3 num8 num8" "num4 num8 num8" "num5 num8 num8";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type8-2 {
-      grid-template-areas: "num2 num4 num6" "num3 num5 num7" "num1 num1 num8" "num1 num1 num8" "num1 num1 num8";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr; }
-    .charts-wrap .charts.type9-1 {
-      grid-template-areas: "num1 num2 num3" "num4 num5 num6" "num7 num8 num9";
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr; }
-    .charts-wrap .charts .oneChart {
-      display: flex;
-      flex-direction: column;
-      position: relative; }
-      .charts-wrap .charts .oneChart .panel {
-        display: flex;
-        background-color: whitesmoke;
-        border: 1px solid #cacaca;
-        line-height: 2;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 10; }
-        .charts-wrap .charts .oneChart .panel .symbol {
-          margin: 0 10px; }
-        .charts-wrap .charts .oneChart .panel .interval {
-          display: flex;
-          color: #202020; }
-          .charts-wrap .charts .oneChart .panel .interval > * {
-            margin: 0 4px;
-            cursor: pointer; }
-          .charts-wrap .charts .oneChart .panel .interval .selected {
-            padding: 0px 7px;
-            background-color: #cacaca; }
-        .charts-wrap .charts .oneChart .panel button.btn-cross {
-          height: inherit;
-          flex-grow: 4;
-          padding-right: 20px; }
-      .charts-wrap .charts .oneChart .msgLogWrap {
-        display: flex;
-        flex-direction: column-reverse;
-        position: absolute;
-        bottom: 26px;
-        max-height: 60px;
-        padding: 0px 5px;
-        overflow-y: auto;
-        line-height: normal;
-        z-index: 10; }
-        .charts-wrap .charts .oneChart .msgLogWrap > div {
-          pointer-events: none; }
-      .charts-wrap .charts .oneChart.num1 {
-        grid-area: num1; }
-      .charts-wrap .charts .oneChart.num2 {
-        grid-area: num2; }
-      .charts-wrap .charts .oneChart.num3 {
-        grid-area: num3; }
-      .charts-wrap .charts .oneChart.num4 {
-        grid-area: num4; }
-      .charts-wrap .charts .oneChart.num5 {
-        grid-area: num5; }
-      .charts-wrap .charts .oneChart.num6 {
-        grid-area: num6; }
-      .charts-wrap .charts .oneChart.num7 {
-        grid-area: num7; }
-      .charts-wrap .charts .oneChart.num8 {
-        grid-area: num8; }
-      .charts-wrap .charts .oneChart.num9 {
-        grid-area: num9; }
-      .charts-wrap .charts .oneChart.num10 {
-        grid-area: num10; }
-      .charts-wrap .charts .oneChart.num11 {
-        grid-area: num11; }
-      .charts-wrap .charts .oneChart.num12 {
-        grid-area: num12; }
-    .charts-wrap .charts .tv-lightweight-charts {
-      border: 1px solid #cacaca;
-      width: inherit !important;
-      overflow: inherit !important;
-      padding-top: 26px; }
-
-.positions {
-  display: table;
-  height: 100px;
-  margin: 50px 10px 0; }
-  .positions .MuiTableCell-root {
-    white-space: nowrap; }
-
-.statisticWrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center; }
-  .statisticWrap .profit {
-    display: inline-table;
-    width: 45vw;
-    height: 25vh;
-    border: 1px solid #cacaca;
-    margin: 10px; }
-  .statisticWrap .coins {
-    display: inline-table;
-    width: 45vw;
-    border: 1px solid #cacaca;
-    margin: 10px; }
-    .statisticWrap .coins canvas {
-      height: 250px !important; }
-
-.markets {
-  display: table;
-  height: 100px;
-  margin: 0px 10px 0 10px;
-  padding: 10px 0 0; }
-  .markets .MuiTableCell-alignLeft {
-    text-align: right; }
-  .markets .MuiTableRow-root > td:first-child {
-    text-align: left; }
-  .markets .MuiTableRow-root > th:first-child span {
-    flex-direction: row; }
-  .markets .MuiTableRow-root .MuiTableSortLabel-root {
-    flex-direction: row-reverse; }
-  .markets .MuiTableRow-root .MuiTableCell-root.MuiTableCell-head {
-    border-color: #ccc; }
-
-.favs {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  margin-right: 20px; }
-  .favs .favOne {
-    box-sizing: border-box;
-    font-size: 0.875rem;
-    cursor: pointer; }
-    .favs .favOne .favBoby {
-      position: relative;
-      width: 150px;
-      height: 22px;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-areas: "smbl change cross" "option option option";
-      align-items: end;
-      background-color: white;
-      border: 1px solid #c2c9c9; }
-    .favs .favOne .symbol,
-    .favs .favOne .positive,
-    .favs .favOne .negative {
-      padding: 5px; }
-      .favs .favOne .symbol:hover ~ .favOption,
-      .favs .favOne .positive:hover ~ .favOption,
-      .favs .favOne .negative:hover ~ .favOption {
-        display: block; }
-    .favs .favOne .symbol {
-      grid-area: smbl; }
-    .favs .favOne .positive {
-      grid-area: change;
-      text-align: right;
-      color: #45b649; }
-    .favs .favOne .negative {
-      grid-area: change;
-      text-align: right;
-      color: #ff3d46; }
-    .favs .favOne button {
-      grid-area: cross;
-      color: #cacaca; }
-    .favs .favOne .favOption {
-      position: absolute;
-      grid-area: option;
-      border: 1px solid #c2c9c9;
-      padding: 3px 7px;
-      border-top: none;
-      width: 150px;
-      top: -1px;
-      left: -1px;
-      z-index: 100;
-      background-color: #ffffff;
-      display: none; }
-      .favs .favOne .favOption:hover {
-        display: block; }
-      .favs .favOne .favOption .row {
-        display: flex; }
-        .favs .favOne .favOption .row div {
-          margin: 0 3px 0 0;
-          padding: 2px; }
-          .favs .favOne .favOption .row div:hover {
-            color: #ffffff;
-            background-color: #7f8c8d; }
-
-.goal-wrap {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 10px;
-  height: inherit;
-  margin-top: 20px; }
-  .goal-wrap .element {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: whitesmoke;
-    border: 1px solid #cacaca;
-    padding: 0 5px; }
-    .goal-wrap .element.loss {
-      color: #a30008;
-      background-color: #fff5f5;
-      border: 1px solid #a30008; }
-    .goal-wrap .element > div {
-      margin: 2px 3px; }
-    .goal-wrap .element .date,
-    .goal-wrap .element .symbol {
-      width: 27%; }
-    .goal-wrap .element .steps {
-      width: 10%; }
-    .goal-wrap .element .profit {
-      background-color: #ffffff;
-      text-align: center;
-      padding: 2px 10px;
-      width: 20%; }
-    .goal-wrap .element .percent {
-      font-size: 0.8rem;
-      text-align: right;
-      width: 15%; }
-  .goal-wrap.type9-1 {
-    grid-template-areas: "num1 num2 num3" "num4 num5 num6" "num7 num8 num9";
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr; }
-  .goal-wrap .oneChart {
-    display: flex;
-    flex-direction: column;
-    position: relative; }
+.preloaderWrap {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  margin-right: 0;
+  margin-top: 32px;
+  margin-left: calc(50% - 32px);
+  z-index: 1; }

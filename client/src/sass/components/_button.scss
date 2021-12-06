@@ -29,6 +29,10 @@
         font-size: fz(0);
     }
 
+    &.short {
+        max-width: fit-content;
+    }
+
     &:hover {
         background-color: color($light, 10);
         border-color: color($light, 20);
@@ -68,6 +72,19 @@ div .btn {
         // }
     }
 
+    &.btn-primary {
+        background-color: color($primary, -40);
+        border-color: color($primary, -20);
+        color: $white;
+        flex-grow: 2;
+
+        &:hover,
+        &:focus {
+            background-color: color($primary, -30);
+            border-color: color($primary, -15);
+        }
+    }
+
     &.btn-secondary {
         background-color: color($secomdary);
         border-color: color($secomdary, 10);
@@ -82,14 +99,14 @@ div .btn {
     }
 
     &.btn-danger {
-        background-color: color($danger, -30);
-        border-color: color($danger, -15);
-        color: color($danger, 40);
+        background-color: color($orange, -30);
+        border-color: color($orange, -15);
+        color: color($orange, 40);
         flex-grow: 2;
 
         &:hover {
-            background-color: color($danger, -25);
-            border-color: color($danger, -10);
+            background-color: color($orange, -25);
+            border-color: color($orange, -10);
         }
     }
 

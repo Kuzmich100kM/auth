@@ -8,12 +8,14 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
     "env-cmd": "^10.1.0",
+    "nanoid": "^3.1.30",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
+    "react-toastify": "^8.1.0",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.0",
     "sass-loader": "^10.2.0",
@@ -21,9 +23,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "env-cmd -f .env.production react-scripts build",
+    "build": "react-scripts build",
     "sass": "node-sass -w src/sass/ -o src/css/ --recursive",
-    "sass-min": "node-sass src/sass/main.scss src/css/main.min.css --output-style compressed"
+    "sass-min": "node-sass src/sass/main.scss src/css/main.min.css --output-style compressed",
+    "dev": "set NODE_ENV=development&&concurrently \"npm run sass\" \"npm run sass-min\" \"npm run start\"",
+    "prod": "set NODE_ENV=production&&concurrently \"npm run sass\" \"npm run sass-min\" \"npm run build\""
   },
   "eslintConfig": {
     "extends": [

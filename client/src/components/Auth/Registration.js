@@ -1,23 +1,22 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { inAuthPageAC, userRegistrationTC } from "../../reducers/user.reducer"
+import { inAuthPageAC, userRegistrationTC } from "../../reducers/auth.reducer"
 import FormPanel from "../common/FormHooks"
 import { isFilled, isEmail, isLengthMore } from "../common/FormHooks/inputValidators"
-import Alerts from "./../Alerts"
 
 export default function Registration() {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-	const { isAuth } = useSelector(state => state.user)
+	const { isAuth } = useSelector(state => state.auth)
 
 	const sendData = ({ email, password }) => dispatch(userRegistrationTC(email, password))
 
-	const goLogin = () => navigate("/login")
+	const goLogin = () => navigate("/auth/login")
 
 	useEffect(() => {
 		dispatch(inAuthPageAC(true)) // for hide button "Login" in header
-		isAuth && navigate("/")
+		isAuth && navigate("/u/dashboard")
 		return () => dispatch(inAuthPageAC(false))
 	}, [isAuth, navigate, dispatch])
 
@@ -58,7 +57,6 @@ export default function Registration() {
 				//valueCb={valueCb}
 				//cls="small"
 			/>
-			<Alerts />
 		</div>
 	)
 }

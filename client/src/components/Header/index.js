@@ -4,10 +4,10 @@ import Logo from "./Logo"
 
 import Navbar from "./Navbar"
 import { useDispatch, useSelector } from "react-redux"
-import { userLogoutTC } from "../../reducers/user.reducer"
+import { userLogoutTC } from "../../reducers/auth.reducer"
 
 export default function Header() {
-	const { isAuth, email, inAuthPage } = useSelector(state => state.user)
+	const { isAuth, email, inAuthPage } = useSelector(state => state.auth)
 	const dispatch = useDispatch()
 
 	const goLogout = e => {
@@ -28,7 +28,7 @@ export default function Header() {
 		<header>
 			<Logo />
 			<Navbar />
-			{isAuth ? elem : inAuthPage ? <></> : <Link to={`/login`}>Войти</Link>}
+			{isAuth ? elem : inAuthPage ? <></> : <Link to={`auth/login`}>Log in</Link>}
 		</header>
 	)
 }

@@ -7,4 +7,6 @@ router.post("/registration", controller.registration)
 router.get("/activation/:link", controller.activation)
 router.get("/refreshtoken", controller.refresh)
 
+router.post("/changerole", controller.changeRole)
+
 module.exports = router

@@ -1,61 +1,61 @@
-// Из валидатора возвращаем (true) или текст ошибки
+// Return from the validator (true) or the error text
 
-// Обязательное поле
+// Required field
 export const isFilled = input => {
 	let isCheck = input && input.toString().length > 0
-	return !isCheck ? "Обязательное поле" : true
+	return !isCheck ? "Required field" : true
 }
 
-// Проверка на число
+// Check the number
 export const isNumber = input => {
 	let isCheck = input != null && !isNaN(input)
-	return !isCheck ? "Только число" : true
+	return !isCheck ? "Number only" : true
 }
 
-// Проверка на целое число
+// Integer check
 export const isInt = input => {
 	let isCheck = input != null && Number.isInteger(+input)
-	return !isCheck ? "Только целое число" : true
+	return !isCheck ? "Integer only" : true
 }
 
-// Проверка, что число в диапазоне
+// Checking that a number is in a range
 export const isNumberRange = (input, min, max) => {
 	let isCheck = input != null && !isNaN(input) && input >= min && input <= max
-	return !isCheck ? `Число в диапазоне ${min}...${max}` : true
+	return !isCheck ? `Number in range ${min}...${max}` : true
 }
 
-// Проверка, что число больше указанного
+// Checking if the number is greater than the specified one
 export const isNumberMore = (input, min) => {
 	let isCheck = input != null && !isNaN(input) && input > min
-	return !isCheck ? `Введите число больше ${min}` : true
+	return !isCheck ? `Please enter a number greater than ${min}` : true
 }
 
-// Проверка, что число меньше указанного
+// Checking if the number is less than the specified one
 export const isNumberLess = (input, max) => {
 	let isCheck = input != null && !isNaN(input) && input < max
-	return !isCheck ? `Введите число меньше ${max}` : true
+	return !isCheck ? `Please enter a number less than ${max}` : true
 }
 
-// Проверка, что символов не меньше указанного
+// Checking that characters are not less than the specified one
 export const isLengthMore = (input, length) => {
 	let isCheck = input && input.toString().trim().length >= length
-	return !isCheck ? `Не меньше ${length} символов` : true
+	return !isCheck ? `At least ${length} characters` : true
 }
 
-// Проверка, что символов не больше указанного
+// Checking that there are no more than the specified characters
 export const isLengthLess = (input, length) => {
 	let isCheck = input && input.toString().trim().length <= length
-	return !isCheck ? `Не больше ${length} символов` : true
+	return !isCheck ? `No more than ${length} characters` : true
 }
 
 export const isTrue = input => {
 	let isCheck = input === true
-	return !isCheck ? "Обязательное поле" : true
+	return !isCheck ? "Required field" : true
 }
 
-// Валидация email
+// Email validation
 export const isEmail = mail => {
 	const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 	let isCheck = regex.test(mail)
-	return !isCheck ? "Укажите реальную почту" : true
+	return !isCheck ? "Enter real mail" : true
 }

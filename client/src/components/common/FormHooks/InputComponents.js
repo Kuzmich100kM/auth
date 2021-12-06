@@ -1,18 +1,25 @@
 import React, { useState } from "react"
 
 export function Input({ name, label, value, type, alert, inputChange, className, placeholder }) {
+	const [isPassword, setIsPassword] = useState(type)
+
+	const showHidePass = () => {
+		isPassword === "input" ? setIsPassword("password") : setIsPassword("input")
+	}
+
 	return (
 		<div className={className ? `form-group ${className}` : `form-group`}>
 			{alert && <div className="error">{alert}</div>}
 			<input
 				id={name}
 				name={name}
-				type={type}
+				type={isPassword}
 				onChange={inputChange}
 				defaultValue={value || null}
 				placeholder={placeholder || " "}
 			/>
 			<label htmlFor={name}>{label}</label>
+			<div className="eye" onClick={showHidePass}></div>
 		</div>
 	)
 }

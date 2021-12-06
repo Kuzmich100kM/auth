@@ -91,6 +91,38 @@ form {
             position: relative;
             color: $black;
         }
+
+        &~.eye {
+            display: none;
+            cursor: pointer;
+            left: 100%;
+            transform: translateX(calc(-100% + -72px));
+            position: absolute;
+        }
+
+        &[value]:not([value=""])[id="password"] {
+            &~.eye {
+                display: inline;
+                cursor: pointer;
+                font-size: 0.80rem;
+                height: 8px;
+            }
+
+            &[type="password"] {
+                &~.eye::after {
+                    content: "SHOW";
+                    color: #689982;
+                }
+            }
+
+            &[type="input"] {
+                &~.eye::after {
+                    content: "HIDE";
+                    color: #996877;
+                }
+            }
+
+        }
     }
 
     .radio {
