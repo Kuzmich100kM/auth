@@ -11,11 +11,11 @@
 - Сlone or download archive to working folder
 - Install npm packages specified in package.json file:
 
-### `cd server`
+#### `cd server`
 
 #### `npm install`
 
-### `cd client`
+#### `cd client`
 
 #### `npm install`
 
