@@ -1,4 +1,4 @@
-# Authorization server, based on JWT Access & Refresh tokens
+# Authorization server
 
 ## Includes: JWT Access & Refresh tokens, User Roles, Email activation, Alert Badges
 
