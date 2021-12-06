@@ -1,19 +1,21 @@
 # Authorization server, based on JWT Access & Refresh tokens
 
-![](client/src/assets/img/scr-auth.png "auth main page")
+## Includes: JWT Access & Refresh tokens, User Roles, Email activation, Alert Badges
 
-## Demo page --> [Auth Simple on herokuapp.com](https://authsimple.herokuapp.com/)
+### Demo page --> [Auth Simple on herokuapp.com](https://authsimple.herokuapp.com/)
+
+![](client/src/assets/img/scr-auth.png "auth main page")
 
 ## How to use
 
 - Сlone or download archive to working folder
 - Install npm packages specified in package.json file:
 
-#### `cd server`
+### `cd server`
 
 #### `npm install`
 
-#### `cd client`
+### `cd client`
 
 #### `npm install`
 
