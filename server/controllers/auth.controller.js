@@ -101,7 +101,7 @@ module.exports.refresh = async (req, res, next) => {
 		await tokenService.saveRefreshToken(userId, refreshToken)
 
 		// Send to browser authData and RefreshToken to browser cookie
-		res.cookie("refreshToken", refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true }) // if use https-> {secure: true}
+		res.cookie("refreshToken", refreshToken, { maxAge: 10 * 24 * 60 * 60 * 1000, httpOnly: true }) // if use https-> {secure: true}
 		return res.status(200).json({ userId, email, roles, isActivated, accessToken })
 	} catch (error) {
 		next(error)
