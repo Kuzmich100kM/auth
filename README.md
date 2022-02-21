@@ -10,6 +10,18 @@
 
 ![](client/src/assets/img/scr-auth-diagram-01.png "Simplified Auth Scheme")
 
+##
+
+![](client/src/assets/img/scr-auth-diagram-02.png "Registration Scheme")
+
+##
+
+![](client/src/assets/img/scr-auth-diagram-03.png "Login Scheme")
+
+##
+
+![](client/src/assets/img/scr-auth-diagram-04.png "Refresh Scheme")
+
 ### How to use
 
 - Сlone or download archive to working folder
