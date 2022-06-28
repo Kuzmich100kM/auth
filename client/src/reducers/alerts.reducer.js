@@ -36,13 +36,14 @@ export const deleteAlert = id => ({ type: DELETE_ALERT, payload: id })
 export const deleteAllAlerts = () => ({ type: DELETE_ALL_ALERTS })
 
 // Thunk Creators
-export const addAlert = (msg, type = "info", timeout = 5000) => async dispatch => {
-	const id = nanoid(3)
-	//const alert = { id, type, msg }
-	try {
-		dispatch({ type: ADD_ALERT, payload: { id, type, msg } })
-		setTimeout(() => dispatch(deleteAlert(id)), timeout)
-	} catch (error) {
-		console.log(`error`, error)
+export const addAlert = (msg, type = "info", timeout = 5) => {
+	return async dispatch => {
+		const id = nanoid(3)
+		try {
+			dispatch({ type: ADD_ALERT, payload: { id, type, msg } })
+			setTimeout(() => dispatch(deleteAlert(id)), timeout * 1000)
+		} catch (error) {
+			console.log(`error`, error)
+		}
 	}
 }
